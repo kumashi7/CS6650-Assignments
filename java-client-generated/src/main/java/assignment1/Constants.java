@@ -1,7 +1,8 @@
 package assignment1;
 
 public final class Constants {
-    public static final String BASE_URL = "http://localhost:8080/servlets_war_exploded";
+//    public static final String BASE_URL = "http://localhost:8080/servlets_war_exploded";
+    public static final String BASE_URL = "http://52.40.255.71:8080/servlets_war";
     public static final Integer NUMOFTHREADS = 32;
     public static final Integer NUMOFPOSTS = 1000;
     public static final Integer NUMOFOBJECTS = 200000;

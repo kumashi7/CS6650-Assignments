@@ -20,26 +20,17 @@ public class SkierServlet extends HttpServlet {
         String urlPath = req.getPathInfo();
         if (urlPath == null || urlPath.isEmpty()) {
             res.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            res.getWriter().write("missing paramterers");
+            res.getWriter().write("missing parameters");
             return;
         }
-        String[] urlParts = urlPath.split("/");
-
-        if (!isUrlValid(urlParts)) {
-            res.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        } else {
-            res.setStatus(HttpServletResponse.SC_OK);
-            res.getWriter().write("Good luck on your ride, skier");
-        }
+        res.getWriter().write("Good luck on your ride, skier");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("text/plain");
         String urlPath = req.getPathInfo();
-        System.out.println(urlPath);
 
-        // check we have a URL!
         if (urlPath == null || urlPath.isEmpty()) {
             res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             res.getWriter().write("missing url");
