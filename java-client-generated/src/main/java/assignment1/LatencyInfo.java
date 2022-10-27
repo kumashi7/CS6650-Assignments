@@ -3,7 +3,7 @@ package assignment1;
 /**
  * Class of latency information
  */
-public class LatencyInfo {
+public class LatencyInfo extends Timer {
     public long startTime;
     public String requestType;
     public double latency;
