@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="ec2-user@18.237.188.156:22" type="ssh/sftp" uuid="0f1e19a9-e234-4d2b-91af-41adbf18e262">
+        <config>
+          <option name="projectRootOnTarget" value="/home/ec2-user/servlets" />
+          <option name="serverName" value="ec2-user@18.237.188.156:22 key" />
+          <option name="useRsync" value="true" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="javaVersionString" value="11.0.16" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>
