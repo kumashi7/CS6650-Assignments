@@ -12,7 +12,7 @@ public class ChannelFactory extends BasePooledObjectFactory<Channel> {
     @Override
     public Channel create() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("34.216.209.67");
+        factory.setHost("54.191.240.124");
         factory.setUsername("ybohan");
         factory.setPassword("950215");
         factory.setVirtualHost("/");

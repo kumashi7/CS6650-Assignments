@@ -2,6 +2,8 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
+import redis.clients.jedis.Jedis;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,18 +19,23 @@ public class Consumer {
 
     public static void main(String[] argv) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("34.216.209.67");
+        factory.setHost("54.191.240.124");
         factory.setUsername("ybohan");
         factory.setPassword("950215");
         factory.setVirtualHost("/");
         factory.setPort(5672);
         final Connection connection = factory.newConnection();
-        Map<Integer, String> skierId2Message = new ConcurrentHashMap<>();
+//        Map<Integer, String> skierId2Message = new ConcurrentHashMap<>();
 
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 try {
+                    Jedis jedis = new Jedis("http://localhost:6379");
+                    System.out.println("Connection to server successfully" +
+                            "==============================================");
+                    //check whether server is running or not
+                    System.out.println("Server is running: "+jedis.ping());
                     final Channel channel = connection.createChannel();
                     channel.queueDeclare(QUEUE_NAME, true, false, false, null);
                     // max one message per receiver
@@ -42,8 +49,9 @@ public class Consumer {
                                 + " Received '" + message + "'");
 
                         String[] urlParts = message.split("/");
-                        int skierId =  Integer.parseInt(urlParts[7]);
-                        skierId2Message.put(skierId, message);
+                        String skierId =  urlParts[7];
+//                        skierId2Message.put(skierId, message);
+                        jedis.lpush(skierId, message);
                     };
                     // process messages
                     channel.basicConsume(QUEUE_NAME, false, deliverCallback, consumerTag -> { });
