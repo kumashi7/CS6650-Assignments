@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Created-By: IntelliJ IDEA
-Built-By: mingmingzheng
-Build-Jdk: BellSoft Liberica JDK version 11.0.13
-
